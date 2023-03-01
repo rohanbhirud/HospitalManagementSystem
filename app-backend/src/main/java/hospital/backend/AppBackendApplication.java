@@ -39,12 +39,12 @@ public class AppBackendApplication {
 //	authRepo.saveAll(authorityList);
 //	
 //	List<User> users = new ArrayList<>();
-//	users.add(new User("user1",encoder.encode("pass1"),assignAuthority("ADMIN")));
-//	users.add(new User("user2",encoder.encode("pass2"),assignAuthority("RECEPTIONIST")));
-//	users.add(new User("user3",encoder.encode("pass3"),assignAuthority("DOCTOR")));
-//	users.add(new User("user4",encoder.encode("pass4"),assignAuthority("PHARMACIST")));
-//	users.add(new User("user5",encoder.encode("pass5"),assignAuthority("LABINCHARGE")));
-//	users.add(new User("user6",encoder.encode("pass6"),assignAuthority("WARDINCHARGE")));
+//	users.add(new User("user1",encoder.encode("pass1"),assignAuthority("ADMIN"),null,null,null,null,null));
+//	users.add(new User("user2",encoder.encode("pass2"),assignAuthority("RECEPTIONIST"),null,null,null,null,null));
+//	users.add(new User("user3",encoder.encode("pass3"),assignAuthority("DOCTOR"),null,null,null,null,null));
+//	users.add(new User("user4",encoder.encode("pass4"),assignAuthority("PHARMACIST"),null,null,null,null,null));
+//	users.add(new User("user5",encoder.encode("pass5"),assignAuthority("LABINCHARGE"),null,null,null,null,null));
+//	users.add(new User("user6",encoder.encode("pass6"),assignAuthority("WARDINCHARGE"),null,null,null,null,null));
 //	
 //	userRepo.saveAll(users);
 //	}

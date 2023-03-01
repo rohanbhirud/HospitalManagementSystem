@@ -1,40 +1,34 @@
-import React, { Component } from 'react'
+import React, { Component, createContext, useState } from 'react'
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
 
   const navigate = useNavigate();
-
-  const [state, setState] = React.useState({
+  
+  const [state, setState] = useState({
     username: '',
     password: '',
-    isValid: false
+    jwtToken:'',
+    isValid: false,
   });
 
-  const checkLogin = async () => {
+  const handleLogin = async () => {
     try {
-      const response = await axios.post('http://localhost:8080/login', {
+      const response = await axios.post('http://localhost:8080/api/v1/auth/login', {
         username: state.username,
-        password: state.password
+        password: state.password,
       });
-      return true;
+      setState({ ...state, jwtToken: response.data });
+      navigate('/home', { state: { jwtToken: response.data } });
     } catch (error) {
       console.error(error);
-      return false;
     }
-  }
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    if(await checkLogin()){
-      navigate('/home', { state: { username: state.username } })
-    }
-  }
+  };
 
   return (
     <div className='container mt-5'>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleLogin}>
         <div className="row form-outline mb-4">
           <input type="text" id="username" className="form-control" value={state.username}
             onChange={(e) => setState({ ...state, username: e.target.value })} />
