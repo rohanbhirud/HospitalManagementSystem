@@ -1,6 +1,7 @@
-1. Receptionist: Add/update/remove patient; add/update/remove appointments; patient bill generation
-2. Doctor: Prescribe patient medicines/lab tests;
-3. LabIncharge: Add/update lab results to patient; lab tests bill generate
-4. WardIncharge: In/Out patient status(whether to admit or not);
-5. Pharmacist: add/update/delete medical inventory; generate medical bill
-6. Admin: add/update/delete above 5 user details; access to all views
+1. Receptionist: Add/update/remove patient; add/update/remove appointments; patient bill generation(Siddharth)
+2. Doctor: Prescribe patient medicines/lab tests;(Amber)
+3. LabIncharge: Add/update lab results to patient; lab tests report generate(Deepak)
+4. WardIncharge: In/Out patient status(whether to admit or not);(Rohan)
+5. Pharmacist: add/update/delete medical inventory; generate medical bill(Shubham)
+6. Admin: add/update/delete above 5 user details; access to all views(Rohan)
+

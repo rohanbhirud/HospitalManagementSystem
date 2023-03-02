@@ -23,6 +23,8 @@ public class Patient {
 	private int age;
 
 	private String address;
+	
+	private boolean inOutStatus;  //true if inpatient, false if outpatient
 
 	public int getPatientId() {
 		return patientId;
