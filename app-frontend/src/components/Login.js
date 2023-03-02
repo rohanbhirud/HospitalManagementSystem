@@ -13,13 +13,15 @@ export default function Login() {
     isValid: false,
   });
 
-  const handleLogin = async () => {
+  const handleLogin = async (e) => {
+    e.preventDefault();
     try {
       const response = await axios.post('http://localhost:8080/api/v1/auth/login', {
         username: state.username,
         password: state.password,
       });
       setState({ ...state, jwtToken: response.data });
+      
       navigate('/home', { state: { jwtToken: response.data } });
     } catch (error) {
       console.error(error);
