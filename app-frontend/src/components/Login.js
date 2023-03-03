@@ -11,13 +11,14 @@ export default function Login() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-
-    if(await doCompleteLogin({"username":state.username, "password":state.password})){
-      document.getElementById("login_check").hidden=true;
-    } else {
-      document.getElementById("login_check").hidden=false;
-    }
+    doCompleteLogin(state);
     
+    if (localStorage.getItem('jwt') == null) {
+      document.getElementById("login_check").hidden = true;
+    } else {
+      document.getElementById("login_check").hidden = false;
+    }
+
   };
 
   return (
