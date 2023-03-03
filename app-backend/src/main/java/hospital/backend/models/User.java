@@ -74,6 +74,10 @@ public class User implements UserDetails {
 	}
 	
 	
+	public void setAuthorities(List<Authorities> authorities) {
+		this.authorities = authorities;
+	}
+
 	public String getFirstname() {
 		return firstname;
 	}

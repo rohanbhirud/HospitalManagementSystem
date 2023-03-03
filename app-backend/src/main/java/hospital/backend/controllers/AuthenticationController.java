@@ -66,9 +66,7 @@ public class AuthenticationController {
 		userInfo.setRoles(userObj.getAuthorities().toArray());
 		
 		return ResponseEntity.ok(userInfo);
-		
-		
-		
+
 	}
 	
 }

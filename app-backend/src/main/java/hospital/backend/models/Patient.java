@@ -82,10 +82,19 @@ public class Patient {
 		this.address = address;
 	}
 
-	public Patient() {}
 	
-	public Patient(int patientId, String patientName, String email, double phone, char gender, int age,
-			String address) {
+	public boolean isInOutStatus() {
+		return inOutStatus;
+	}
+
+	public void setInOutStatus(boolean inOutStatus) {
+		this.inOutStatus = inOutStatus;
+	}
+
+	public Patient() {}
+
+	public Patient(int patientId, String patientName, String email, double phone, char gender, int age, String address,
+			boolean inOutStatus) {
 		super();
 		this.patientId = patientId;
 		this.patientName = patientName;
@@ -94,13 +103,15 @@ public class Patient {
 		this.gender = gender;
 		this.age = age;
 		this.address = address;
+		this.inOutStatus = inOutStatus;
 	}
 
 	@Override
 	public String toString() {
 		return "Patient [patientId=" + patientId + ", patientName=" + patientName + ", email=" + email + ", phone="
-				+ phone + ", gender=" + gender + ", age=" + age + ", address=" + address + "]";
+				+ phone + ", gender=" + gender + ", age=" + age + ", address=" + address + ", inOutStatus="
+				+ inOutStatus + "]";
 	}
 	
-	
+		
 }
