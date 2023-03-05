@@ -1,9 +1,12 @@
 import React from 'react'
 
+
 const Home = () => {
-    const username = localStorage.getItem('username');
+
+  const user = localStorage.getItem('username');
+
   return (
-    <div>Hello, {username}</div>
+    <div>Home {user}</div>
   )
 }
 
