@@ -9,7 +9,10 @@ const ViewUsers = () => {
 
   useEffect(() => {
     getAllUsers()
-      .then((response) => setUsers(response.data))
+      .then((response) => {
+        setUsers(response.data);
+        console.log(response.data)
+      })
       .catch((error) => console.error(error));
   }, []);
 
@@ -34,7 +37,7 @@ const ViewUsers = () => {
           <th>Username</th>
           <th>First Name</th>
           <th>Last Name</th>
-          <th>Email</th>
+          <th>Authority</th>
           <th>Age</th>
           <th>Actions</th>
         </tr>
@@ -46,7 +49,7 @@ const ViewUsers = () => {
             <td>{user.username}</td>
             <td>{user.firstname}</td>
             <td>{user.lastname}</td>
-            <td>{user.email}</td>
+            <td>{user.authorities[0].authority}</td>
             <td>{user.age}</td>
             <td>
               <Button variant="primary" onClick={() => handleEdit(user.username)}>Edit</Button>{' '}
