@@ -36,7 +36,12 @@ public class UserDetailsServiceImpl implements IUserDetailsService, UserDetailsS
 
 	public List<Authorities> assignAuthority(String authority) throws InvalidAuthorityException {
 		List<Authorities> auths = new ArrayList<>();
+<<<<<<< HEAD
 		if (authRepo.findByRoles(authority) != null) {
+=======
+		System.out.println("Trying to assign authority: "+ authority);
+		if (authRepo.findByRole(authority) != null) {
+>>>>>>> df0e266312f0e848c4859302d11efbb00f37953f
 			auths.add(new Authorities(authority));
 		} else {
 			throw new InvalidAuthorityException();

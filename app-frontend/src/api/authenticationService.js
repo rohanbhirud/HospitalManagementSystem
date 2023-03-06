@@ -5,14 +5,14 @@ export const doCompleteLogin = async (authRequest) => {
         const loginResp = await userLogin(authRequest);
         const jwt = loginResp.data.token;
         localStorage.setItem("jwt", jwt);
-        console.log(jwt);
+        //console.log(jwt);
 
         const fetchResp = await fetchUserData();
         const username = fetchResp.data.userName;
         const authority = fetchResp.data.roles[0].authority;
         localStorage.setItem("username", username);
         localStorage.setItem("authority", authority);
-        console.log(fetchResp.data);
+        //console.log(fetchResp.data);
     } catch(err){
         console.log(err);
         localStorage.clear();
@@ -20,7 +20,7 @@ export const doCompleteLogin = async (authRequest) => {
 
 }
 
-const getToken = () => {
+export const getToken = () => {
     return localStorage.getItem('jwt');
 }
 

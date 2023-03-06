@@ -3,6 +3,7 @@ package hospital.backend.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -11,12 +12,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import hospital.backend.exceptions.InvalidAuthorityException;
 import hospital.backend.exceptions.UserNotFoundException;
 import hospital.backend.models.User;
 import hospital.backend.repo.UserRepository;
+import hospital.backend.requests.PasswordChangeRequest;
 import hospital.backend.requests.UserDTO;
 import hospital.backend.service.IUserDetailsService;
 
@@ -35,23 +38,26 @@ public class UserController {
 	private PasswordEncoder passEncoder;
 
 	@GetMapping
-	public User getUser(@RequestBody String username) throws UserNotFoundException {
+	public User getUser(@RequestParam String username) {
 
-		User user = userRepo.findByUsername(username);
-		if (user == null) {
-			throw new UserNotFoundException();
-
-		}
-		return user;
+		return userRepo.findByUsername(username);
 
 	}
 
 	@PostMapping
 	public void createUser(@RequestBody UserDTO newuser) throws InvalidAuthorityException {
 
-		userRepo.save(new User(newuser.getUsername(), passEncoder.encode(newuser.getPassword()),
-				userDetailsService.assignAuthority(newuser.getAuthority()), newuser.getFirstname(),
-				newuser.getLastname(), newuser.getEmail(), newuser.getAge(), newuser.getAddress()));
+		User userToCreate = new User();
+
+		userToCreate.setUsername(newuser.getUsername());
+		userToCreate.setPassword(passEncoder.encode(newuser.getPassword()));
+		userToCreate.setAuthorities(userDetailsService.assignAuthority(newuser.getAuthority()));
+		userToCreate.setFirstname(newuser.getFirstname());
+		userToCreate.setLastname(newuser.getLastname());
+		userToCreate.setEmail(newuser.getEmail());
+		userToCreate.setAge(newuser.getAge());
+		userToCreate.setAddress(newuser.getAddress());
+		userRepo.save(userToCreate);
 
 	}
 
@@ -67,26 +73,51 @@ public class UserController {
 
 	@PutMapping
 	public void updateUser(@RequestBody UserDTO updatedUser) throws Exception {
-		
+
 		User userToUpdate = userRepo.findByUsername(updatedUser.getUsername());
 		if (userToUpdate != null) {
-	        userToUpdate.setPassword(passEncoder.encode(updatedUser.getPassword()));
-	        userToUpdate.setAuthorities(userDetailsService.assignAuthority(updatedUser.getAuthority()));
-	        userToUpdate.setFirstname(updatedUser.getFirstname());
-	        userToUpdate.setLastname(updatedUser.getLastname());
-	        userToUpdate.setEmail(updatedUser.getEmail());
-	        userToUpdate.setAge(updatedUser.getAge());
-	        userToUpdate.setAddress(updatedUser.getAddress());
-	        userRepo.save(userToUpdate);
-	        
-	    } else {
-	    	throw new Exception("User updation failed");
-	    }
-		
+			userToUpdate.setAuthorities(userDetailsService.assignAuthority(updatedUser.getAuthority()));
+			userToUpdate.setFirstname(updatedUser.getFirstname());
+			userToUpdate.setLastname(updatedUser.getLastname());
+			userToUpdate.setEmail(updatedUser.getEmail());
+			userToUpdate.setAge(updatedUser.getAge());
+			userToUpdate.setAddress(updatedUser.getAddress());
+			userRepo.save(userToUpdate);
+
+		} else {
+			throw new Exception("User updation failed");
+		}
+
 	}
 
-	
-	public List<User> getAllUsers(){
+	@PutMapping("/profile")
+	public void updateProfile(@RequestBody UserDTO updatedUser) throws Exception {
+
+		User userToUpdate = userRepo.findByUsername(updatedUser.getUsername());
+		if (userToUpdate != null) {
+			userToUpdate.setFirstname(updatedUser.getFirstname());
+			userToUpdate.setLastname(updatedUser.getLastname());
+			userToUpdate.setEmail(updatedUser.getEmail());
+			userToUpdate.setAge(updatedUser.getAge());
+			userToUpdate.setAddress(updatedUser.getAddress());
+			userRepo.save(userToUpdate);
+
+		} else {
+			throw new Exception("Profile updation failed");
+		}
+
+	}
+
+	@GetMapping("/all")
+	public List<User> getAllUsers() {
 		return userRepo.findAll();
+	}
+
+	@PostMapping("/changepass")
+	public ResponseEntity<String> changePassword(@RequestBody PasswordChangeRequest changePass) {
+		User userToUpdate = userRepo.findByUsername(changePass.getUsername());
+		userToUpdate.setPassword(passEncoder.encode(changePass.getPassword()));
+		userRepo.save(userToUpdate);
+		return ResponseEntity.ok("Password Changed");
 	}
 }

@@ -5,6 +5,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+<<<<<<< HEAD
+=======
+import org.springframework.transaction.annotation.Transactional;
+>>>>>>> df0e266312f0e848c4859302d11efbb00f37953f
 
 import hospital.backend.models.DiseasesLabTest;
 import hospital.backend.models.DiseasesMedicine;
@@ -13,6 +17,10 @@ import hospital.backend.repo.DiseaseMedicineRepo;
 import hospital.backend.responses.Prescription;
 
 @Service
+<<<<<<< HEAD
+=======
+@Transactional
+>>>>>>> df0e266312f0e848c4859302d11efbb00f37953f
 public class PrescriptionServiceImpl implements PrescriptionService {
 	
 	@Autowired

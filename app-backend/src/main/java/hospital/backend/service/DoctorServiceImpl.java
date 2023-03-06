@@ -5,12 +5,14 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import hospital.backend.models.Doctor;
 import hospital.backend.repo.DoctorRepo;
 import hospital.backend.requests.DoctorDTO;
 
 @Service
+@Transactional
 public class DoctorServiceImpl implements DoctorService {
 	
 	@Autowired

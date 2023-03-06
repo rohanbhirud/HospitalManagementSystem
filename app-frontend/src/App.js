@@ -1,37 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter, Routes, Route, Link, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import Login from './components/Login';
 import Navbar from './components/Navbar';
-import Home from './components/Navbar';
-import { useEffect, useState } from 'react';
+import ErrorPage from './components/ErrorPage';
+import Ward from './components/ward/Ward';
+import Admin from './components/admin/Admin';
+import Profile from './components/Profile';
+import ChangePass from './components/ChangePass';
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  useEffect(()=>{
-    const username = localStorage.getItem('username');
-    if (username) {
-      setIsLoggedIn(true);
-    } else{
-      setIsLoggedIn(false);
-    }
-  },[])
+
   return (
-    <BrowserRouter>
+    <>
       <Navbar />
       <Routes>
+      <Route exact path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
-        {/* {isLoggedIn ? (
-          <Route path="/home">
-            <Home />
-          </Route>
-        ) : (
-          <Navigate to="/login" />
-        )} */}
+        <Route path="/ward" element={<Ward />} />
+        <Route path="/admin/*" element={<Admin />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile/changepass" element={<ChangePass/>} />
+        <Route path="/error" element={<ErrorPage />} />
       </Routes>
-    </BrowserRouter>
+    </>
   );
 }
 export default App;

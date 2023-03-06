@@ -2,6 +2,7 @@ package hospital.backend.requests;
 
 public class UserDTO {
 
+	private String userId;
 	private String username;
 	private String password;
 	private String authority;
@@ -9,7 +10,7 @@ public class UserDTO {
 	private String lastname;
 	private String email;
 	private int age;
-	private String Address;
+	private String address;
 	
 	public UserDTO() {}
 	public UserDTO(String username, String password, String authority, String firstname, String lastname, String email,
@@ -22,7 +23,14 @@ public class UserDTO {
 		this.lastname = lastname;
 		this.email = email;
 		this.age = age;
-		Address = address;
+		this.address = address;
+	}
+	
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 	public String getUsername() {
 		return username;
@@ -67,10 +75,10 @@ public class UserDTO {
 		this.age = age;
 	}
 	public String getAddress() {
-		return Address;
+		return address;
 	}
 	public void setAddress(String address) {
-		Address = address;
+		this.address = address;
 	}
 	
 	
