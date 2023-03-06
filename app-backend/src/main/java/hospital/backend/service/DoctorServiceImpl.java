@@ -18,7 +18,8 @@ public class DoctorServiceImpl implements DoctorService {
 
 	@Override
 	public int addDoctor(DoctorDTO doctor) {
-		Doctor obj = new Doctor(doctor); 
+		Doctor obj = new Doctor(); 
+		
 		return repo.save(obj).getId();
 	}
 

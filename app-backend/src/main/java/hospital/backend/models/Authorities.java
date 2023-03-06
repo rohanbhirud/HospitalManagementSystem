@@ -11,23 +11,23 @@ public class Authorities implements GrantedAuthority {
 
 	@Id
 	@Column(length=20)
-	private String role;
+	private String roles;
 	
 	@Override
 	public String getAuthority() {
 		// TODO Auto-generated method stub
-		return role;
+		return roles;
 	}
 
 	public void setAuthority(String role) {
-		this.role = role;
+		this.roles = role;
 	}
 
 	public Authorities() {}
 			
 	public Authorities(String role) {
 		super();
-		this.role = role;
+		this.roles = role;
 	}
 
 }

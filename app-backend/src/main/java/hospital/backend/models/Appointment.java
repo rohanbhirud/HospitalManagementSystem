@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+
 @Entity
 public class Appointment {
 
@@ -26,6 +27,20 @@ public class Appointment {
 	private Patient patient;
 	
 	private boolean appointmentStatus;
+	
+	@ManyToOne
+	@JoinColumn(name="doctor_id")
+	private Doctor doctor;
+
+	
+
+	public Doctor getDoctor() {
+		return doctor;
+	}
+
+	public void setDoctor(Doctor doctor) {
+		this.doctor = doctor;
+	}
 
 	public int getAppointmentId() {
 		return appointmentId;
@@ -68,9 +83,9 @@ public class Appointment {
 	}
 
 	public Appointment() {}
-	public Appointment(int appointmentId, LocalDate date, LocalTime time, Patient patient, boolean appointmentStatus) {
+	public Appointment( LocalDate date, LocalTime time, Patient patient, boolean appointmentStatus) {
 		super();
-		this.appointmentId = appointmentId;
+		//this.appointmentId = appointmentId;
 		this.date = date;
 		this.time = time;
 		this.patient = patient;
@@ -80,7 +95,7 @@ public class Appointment {
 	@Override
 	public String toString() {
 		return "Appointment [appointmentId=" + appointmentId + ", date=" + date + ", time=" + time + ", patient="
-				+ patient + ", appointmentStatus=" + appointmentStatus + "]";
+				+ patient + ", appointmentStatus=" + appointmentStatus + ", doctor=" + doctor + "]";
 	}
 	
 	

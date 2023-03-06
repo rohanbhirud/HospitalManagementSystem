@@ -36,7 +36,7 @@ public class UserDetailsServiceImpl implements IUserDetailsService, UserDetailsS
 
 	public List<Authorities> assignAuthority(String authority) throws InvalidAuthorityException {
 		List<Authorities> auths = new ArrayList<>();
-		if (authRepo.findByRole(authority) != null) {
+		if (authRepo.findByRoles(authority) != null) {
 			auths.add(new Authorities(authority));
 		} else {
 			throw new InvalidAuthorityException();

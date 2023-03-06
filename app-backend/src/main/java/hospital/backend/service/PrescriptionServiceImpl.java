@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import hospital.backend.models.DiseasesLabTest;
 import hospital.backend.models.DiseasesMedicine;
@@ -11,6 +12,7 @@ import hospital.backend.repo.DiseaseLabTestRepo;
 import hospital.backend.repo.DiseaseMedicineRepo;
 import hospital.backend.responses.Prescription;
 
+@Service
 public class PrescriptionServiceImpl implements PrescriptionService {
 	
 	@Autowired
