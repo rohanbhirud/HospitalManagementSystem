@@ -143,6 +143,19 @@ public class Patient {
 		this.reportList = reportList;
 		this.prescriptionList = prescriptionList;
 	}
+	
+	public Patient(int patientId, String patientName, String email, String phone, char gender, int age, String address,
+			boolean inOutStatus) {
+		super();
+		this.patientId = patientId;
+		this.patientName = patientName;
+		this.email = email;
+		this.phone = phone;
+		this.gender = gender;
+		this.age = age;
+		this.address = address;
+		this.inOutStatus = inOutStatus;
+	}
 
 	@Override
 	public String toString() {
