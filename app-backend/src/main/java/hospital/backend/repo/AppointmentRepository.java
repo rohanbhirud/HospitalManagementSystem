@@ -7,5 +7,5 @@ import hospital.backend.models.Appointment;
 
 @Repository
 public interface AppointmentRepository extends JpaRepository<Appointment, Integer>{
-
+Appointment findByAppointmentId(int appointmentId);
 }

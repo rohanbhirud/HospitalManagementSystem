@@ -52,13 +52,11 @@ public class AppBackendApplication {
 //	patientRepo.saveAll(patients);
 //	
 //	List<User> users = new ArrayList<>();
-//	users.add(new User("user1",encoder.encode("pass1"),assignAuthority("ADMIN"),"","","",0,""));
-//	users.add(new User("user2",encoder.encode("pass2"),assignAuthority("RECEPTIONIST"),"","","",0,""));
-//	users.add(new User("user3",encoder.encode("pass3"),assignAuthority("DOCTOR"),"","","",0,""));
-//	users.add(new User("user4",encoder.encode("pass4"),assignAuthority("PHARMACIST"),"","","",0,""));
-//	users.add(new User("user5",encoder.encode("pass5"),assignAuthority("LABINCHARGE"),"","","",0,""));
-//	users.add(new User("user6",encoder.encode("pass6"),assignAuthority("WARDINCHARGE"),"","","",0,""));
-//	
+//	User user = new User();
+//	user.setUsername("user1");
+//	user.setPassword(encoder.encode("pass1"));
+//	user.setAuthorities(assignAuthority("ADMIN"));
+//	users.add(user);
 //	userRepo.saveAll(users);
 //	}
 //	
