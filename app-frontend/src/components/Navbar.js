@@ -18,12 +18,30 @@ const Navbar = () => {
     console.log("logout");
     navigate("/login");
   }
+  function handleSystemClick() {
+    const authority = localStorage.getItem('authority');
+    if (authority === 'ADMIN') {
+      navigate('/admin');
+    } else if (authority === 'RECEPTIONIST') {
+      navigate('/receptionist');
+    } else if (authority === 'DOCTOR') {
+      navigate('/doctor');
+    } else if (authority === 'PHARMACIST') {
+      navigate('/pharmacist');
+    } else if (authority === 'LABINCHARGE') {
+      navigate('/labincharge');
+    } else if (authority === 'WARDINCHARGE') {
+      navigate('/ward');
+    } else {
+      navigate('/login');
+    }
+  }
 
   return (
     <div>
       <nav className="navbar navbar-expand-sm" style={{ backgroundColor: '#C7CFF4' }}>
         <div className="container">
-          <a className="navbar-brand" href="/">
+          <a id="default" className="navbar-brand" onClick={handleSystemClick}>
             <h3>Hospital Management System</h3>
           </a>
           <div className="navbar-nav">

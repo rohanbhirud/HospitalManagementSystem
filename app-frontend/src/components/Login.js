@@ -27,7 +27,7 @@ export default function Login() {
       } else if (localStorage.getItem('authority')==='WARDINCHARGE') {
         navigate('/ward')
       } else {
-        navigate('/home')
+        navigate('/error')
       }
     } else {
       document.getElementById("login_check").hidden = false;

@@ -22,20 +22,69 @@ export const getAllUsers = async()=>{
     })
 }
 
-export const updateUser = (user)=>{
+export const updateProfile = (user)=>{
     return axios({
         'method': 'PUT',
-        'url': `http://localhost:8080/api/v1/user`,
-        'data': user,
+        'url': `http://localhost:8080/api/v1/user/profile`,
+        'data': {
+            "userId":null,
+            "username":localStorage.getItem('username'),
+            "password":"",
+            "firstname":user.firstname,
+            "lastname":user.lastname,
+            "authority":"",
+            "age":user.age,
+            "address":user.address
+        },
         headers: {
             'Authorization': 'Bearer ' + getToken()
         }
     })
 }
 
-export const changePass = (userAndPass)=>{
+export const addUser = (user)=>{
+    return axios({
+        'method': 'POST',
+        'url': `http://localhost:8080/api/v1/user`,
+        'data': {
+            "userId":null,
+            "username":user.username,
+            "password":user.password,
+            "firstname":user.firstname,
+            "lastname":user.lastname,
+            "authority":user.authority,
+            "age":user.age,
+            "address":user.address
+        },
+        headers: {
+            'Authorization': 'Bearer ' + getToken()
+        }
+    })
+}
+
+export const updateUser = (user)=>{
     return axios({
         'method': 'PUT',
+        'url': `http://localhost:8080/api/v1/user`,
+        'data': {
+            "userId":null,
+            "username":user.username,
+            "password":"",
+            "firstname":user.firstname,
+            "lastname":user.lastname,
+            "authority":user.authority,
+            "age":user.age,
+            "address":user.address
+        },
+        headers: {
+            'Authorization': 'Bearer ' + getToken()
+        }
+    })
+}
+
+export const changePassword = (userAndPass)=>{
+    return axios({
+        'method': 'POST',
         'url': `http://localhost:8080/api/v1/user/changepass`,
         'data': userAndPass,
         headers: {

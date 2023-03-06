@@ -47,9 +47,17 @@ public class UserController {
 	@PostMapping
 	public void createUser(@RequestBody UserDTO newuser) throws InvalidAuthorityException {
 
-		userRepo.save(new User(newuser.getUsername(), "NA",
-				userDetailsService.assignAuthority(newuser.getAuthority()), newuser.getFirstname(),
-				newuser.getLastname(), newuser.getEmail(), newuser.getAge(), newuser.getAddress()));
+		User userToCreate = new User();
+
+		userToCreate.setUsername(newuser.getUsername());
+		userToCreate.setPassword(passEncoder.encode(newuser.getPassword()));
+		userToCreate.setAuthorities(userDetailsService.assignAuthority(newuser.getAuthority()));
+		userToCreate.setFirstname(newuser.getFirstname());
+		userToCreate.setLastname(newuser.getLastname());
+		userToCreate.setEmail(newuser.getEmail());
+		userToCreate.setAge(newuser.getAge());
+		userToCreate.setAddress(newuser.getAddress());
+		userRepo.save(userToCreate);
 
 	}
 
@@ -78,6 +86,24 @@ public class UserController {
 
 		} else {
 			throw new Exception("User updation failed");
+		}
+
+	}
+
+	@PutMapping("/profile")
+	public void updateProfile(@RequestBody UserDTO updatedUser) throws Exception {
+
+		User userToUpdate = userRepo.findByUsername(updatedUser.getUsername());
+		if (userToUpdate != null) {
+			userToUpdate.setFirstname(updatedUser.getFirstname());
+			userToUpdate.setLastname(updatedUser.getLastname());
+			userToUpdate.setEmail(updatedUser.getEmail());
+			userToUpdate.setAge(updatedUser.getAge());
+			userToUpdate.setAddress(updatedUser.getAddress());
+			userRepo.save(userToUpdate);
+
+		} else {
+			throw new Exception("Profile updation failed");
 		}
 
 	}
