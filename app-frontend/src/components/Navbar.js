@@ -40,10 +40,10 @@ const Navbar = () => {
                 {localStorage.getItem('username')}
               </a>
               <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a className="dropdown-item" href="#">
+                <a className="dropdown-item" href='/profile'>
                   View Profile
                 </a>
-                <a className="dropdown-item" href="#">
+                <a className="dropdown-item" href='/profile/changepass'>
                   Change Password
                 </a>
                 <div className="dropdown-divider"></div>

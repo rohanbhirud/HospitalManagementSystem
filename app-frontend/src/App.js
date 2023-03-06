@@ -8,6 +8,7 @@ import Home from './components/Home';
 import Ward from './components/ward/Ward';
 import Admin from './components/admin/Admin';
 import Profile from './components/Profile';
+import ChangePass from './components/ChangePass';
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
         <Route path="/ward" element={<Ward />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/profile/changepass" element={<ChangePass/>} />
       </Routes>
     </>
   );
