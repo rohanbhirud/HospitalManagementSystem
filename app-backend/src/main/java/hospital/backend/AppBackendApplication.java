@@ -53,8 +53,13 @@ public class AppBackendApplication {
 //	
 //	List<User> users = new ArrayList<>();
 //	User user = new User();
+<<<<<<< HEAD
 //	user.setUsername("Rohan25");
 //	user.setPassword(encoder.encode("Rohan123"));
+=======
+//	user.setUsername("user1");
+//	user.setPassword(encoder.encode("pass1"));
+>>>>>>> e91c46cd8ef3eea9a7e60768932e3b57f5f2470a
 //	user.setAuthorities(assignAuthority("ADMIN"));
 //	users.add(user);
 //	userRepo.saveAll(users);

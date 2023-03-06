@@ -9,5 +9,6 @@ import hospital.backend.models.Patient;
 public interface PatientRepository extends JpaRepository<Patient, Integer>{
 
 	Patient findByPatientName(String name);
+	Patient findByPatientId(int patientId);
 	
 }
