@@ -1,7 +1,8 @@
 package hospital.backend.requests;
 
 public class MedicineDTO {
-private int medicineId;
+	
+	private int medicineId;
 	
 	private String medicineName;
 	
@@ -43,9 +44,8 @@ private int medicineId;
 
 	public MedicineDTO() {}
 	
-	public MedicineDTO(int medicineId, String medicineName, float price, int qty) {
+	public MedicineDTO(String medicineName, float price, int qty) {
 		super();
-		this.medicineId = medicineId;
 		this.medicineName = medicineName;
 		this.price = price;
 		this.qty = qty;
@@ -53,7 +53,7 @@ private int medicineId;
 
 	@Override
 	public String toString() {
-		return "MedicineStore [medicineId=" + medicineId + ", medicineName=" + medicineName + ", price=" + price
+		return "MedicineStore [medicineName=" + medicineName + ", price=" + price
 				+ ", qty=" + qty + "]";
 	}
 	

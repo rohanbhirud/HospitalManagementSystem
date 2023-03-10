@@ -52,9 +52,8 @@ public class MedicineStore {
 
 	public MedicineStore() {}
 	
-	public MedicineStore(int medicineId, String medicineName, float price, int qty) {
+	public MedicineStore(String medicineName, float price, int qty) {
 		super();
-		this.medicineId = medicineId;
 		this.medicineName = medicineName;
 		this.price = price;
 		this.qty = qty;
