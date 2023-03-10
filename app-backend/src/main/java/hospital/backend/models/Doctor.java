@@ -1,19 +1,26 @@
 package hospital.backend.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
-import hospital.backend.requests.DoctorDTO;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 public class Doctor {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+	private int DoctorId;
 	
 	@Column()
 	private String name;
@@ -21,20 +28,36 @@ public class Doctor {
 	@Column
 	private String specialty;
 	
+	@OneToMany(mappedBy = "doctor",cascade = CascadeType.ALL,orphanRemoval = true, fetch = FetchType.LAZY)
+	@JsonIgnore
+	List<Appointment> appointmentList=new ArrayList<>();
+	
+	@JsonProperty
+	@OneToMany(mappedBy = "doctor",cascade = CascadeType.ALL,orphanRemoval = true)
+	List<Prescription> prescriptionList=new ArrayList<>();
+
+	
 	public Doctor() {}
 	
-	public Doctor(DoctorDTO doc) {
-		this.id = doc.getId();
-		this.name = doc.getName();
-		this.specialty = doc.getSpecialty();
+	
+
+	public Doctor(String name, String specialty, List<Appointment> appointmentList,
+			List<Prescription> prescriptionList) {
+		super();
+		this.name = name;
+		this.specialty = specialty;
+		this.appointmentList = appointmentList;
+		this.prescriptionList = prescriptionList;
 	}
 
+
+
 	public int getId() {
-		return id;
+		return DoctorId;
 	}
 
 	public void setId(int id) {
-		this.id = id;
+		this.DoctorId = id;
 	}
 
 	public String getName() {
@@ -55,7 +78,7 @@ public class Doctor {
 
 	@Override
 	public String toString() {
-		return "Doctor [id=" + id + ", name=" + name + ", specialty=" + specialty + "]";
+		return "Doctor [id=" + DoctorId + ", name=" + name + ", specialty=" + specialty + "]";
 	}
 	
 }

@@ -150,10 +150,10 @@ public class User implements UserDetails {
 	
 	public User() {}
 
-	public User(String username, String password, List<Authorities> authorities,String firstname, String lastname, String email, int age,
+	public User(int userId,String username, String password, List<Authorities> authorities,String firstname, String lastname, String email, int age,
 			String address) {
 		super();
-		
+		this.userId = userId;
 		this.username = username;
 		this.password = password;
 		this.firstname = firstname;
@@ -162,6 +162,23 @@ public class User implements UserDetails {
 		this.age = age;
 		Address = address;
 		this.authorities = authorities;
+	}
+	
+
+
+
+
+	public User(String username, String password, List<Authorities> authorities, String firstname, String lastname,
+			String email, int age, String address) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.authorities = authorities;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.email = email;
+		this.age = age;
+		Address = address;
 	}
 
 	@Override

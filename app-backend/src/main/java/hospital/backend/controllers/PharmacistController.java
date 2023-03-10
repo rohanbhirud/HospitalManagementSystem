@@ -25,7 +25,7 @@ import hospital.backend.service.MedicineStoreService;
 @RestController
 @RequestMapping("api/v1/medicine")
 @CrossOrigin
-public class MedicineStoreController {
+public class PharmacistController {
 @Autowired
 private MedicineStoreService medservice;
 @Autowired

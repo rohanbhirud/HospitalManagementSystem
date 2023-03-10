@@ -8,6 +8,6 @@ import hospital.backend.models.Authorities;
 @Repository
 public interface AuthoritiesRepository extends JpaRepository<Authorities, String>{
 
-	Authorities findByRole(String role);
+	Authorities findByRoles(String role);
 	
 }
