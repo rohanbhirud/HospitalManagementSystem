@@ -24,7 +24,7 @@ import hospital.backend.repo.PatientRepository;
 import hospital.backend.repo.UserRepository;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/receptionist")
 @CrossOrigin
 public class ReceptionistAddPatientController {
 
