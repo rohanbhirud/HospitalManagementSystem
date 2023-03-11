@@ -8,5 +8,7 @@ import hospital.backend.models.User;
 
 @Repository
 public interface MedicineRepository extends JpaRepository<MedicineStore, Integer> {
-	MedicineStore findBymedicineId(Integer medicineId);
+	MedicineStore findByMedicineId(Integer medicineId);
+	
+	MedicineStore findByMedicineName(String medicineName);
 }
