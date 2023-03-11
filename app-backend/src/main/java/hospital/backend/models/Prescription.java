@@ -1,7 +1,6 @@
 package hospital.backend.models;
 
 import java.time.LocalDate;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
+
 
 @Entity
 public class Prescription {
@@ -30,7 +31,7 @@ public class Prescription {
 	@Column
 	private String prescription;
 	
-	private String labTest;
+	private String diagnosis;
 
 	private LocalDate prescriptionDate;
 
@@ -58,6 +59,14 @@ public class Prescription {
 		this.prescription = prescription;
 	}
 
+	public String getDiagnosis() {
+		return diagnosis;
+	}
+
+	public void setDiagnosis(String diagnosis) {
+		this.diagnosis = diagnosis;
+	}
+
 	public LocalDate getPrescriptionDate() {
 		return prescriptionDate;
 	}
@@ -66,6 +75,9 @@ public class Prescription {
 		this.prescriptionDate = prescriptionDate;
 	}
 	
+	
+	
+
 	public Integer getPrescriptionId() {
 		return prescriptionId;
 	}
@@ -74,25 +86,28 @@ public class Prescription {
 		this.prescriptionId = prescriptionId;
 	}
 
+
+
+	public Prescription(Doctor doctor, Patient patient, String prescription, String diagnosis,
+			LocalDate prescriptionDate) {
+		super();
+		this.doctor = doctor;
+		this.patient = patient;
+		this.prescription = prescription;
+		this.diagnosis = diagnosis;
+		this.prescriptionDate = prescriptionDate;
+	}
+
 	public Prescription() {
 		super();
 	}
 
-	public String getLabTest() {
-		return labTest;
-	}
-
-	public void setLabTest(String labTest) {
-		this.labTest = labTest;
-	}
-
 	@Override
 	public String toString() {
-		return "Prescription [prescriptionId=" + prescriptionId + ", doctor=" + doctor + ", patient=" + patient
-				+ ", prescription=" + prescription + ", labTest=" + labTest + ", prescriptionDate=" + prescriptionDate
-				+ "]";
+		return "Prescription [doctor=" + doctor + ", patient=" + patient + ", prescription=" + prescription
+				+ ", diagnosis=" + diagnosis + ", prescriptionDate=" + prescriptionDate + "]";
 	}
-
+	
 	
 
 }

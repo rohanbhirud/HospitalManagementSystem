@@ -23,69 +23,57 @@ import hospital.backend.requests.UserDTO;
 import hospital.backend.service.MedicineStoreService;
 
 @RestController
-@RequestMapping("api/v1/pharmacist")
+@RequestMapping("api/v1/medicine")
 @CrossOrigin
 public class PharmacistController {
-	@Autowired
-	private MedicineStoreService medservice;
-	@Autowired
-	private MedicineRepository mediRepo;
+@Autowired
+private MedicineStoreService medservice;
+@Autowired
+private MedicineRepository mediRepo;
+@GetMapping
+public MedicineStore getMedicineStore(@RequestBody Integer medicineId) throws  MedicineStoreNotFoundException{
 
-	@GetMapping
-	public MedicineStore getMedicineStore(@RequestBody MedicineDTO medicine) throws MedicineStoreNotFoundException {
-
-		MedicineStore medistore = mediRepo.findByMedicineId(medicine.getMedicineId());
-		if (medistore == null) {
-			throw new MedicineStoreNotFoundException();
-
-		}
-		return medistore;
+	MedicineStore medistore = mediRepo.findBymedicineId(medicineId);
+	if ( medistore== null) {
+		throw new MedicineStoreNotFoundException();
 
 	}
+	return medistore;
 
-	@PostMapping
-	public void createMedicineStore(@RequestBody MedicineDTO newmedistore) throws InvalidMedicineStoreException {
+}
+@PostMapping
+public void createMedicineStore(@RequestBody MedicineDTO newmedistore) throws InvalidMedicineStoreException {
 
-		mediRepo.save(
-				new MedicineStore(newmedistore.getMedicineName(), newmedistore.getPrice(), newmedistore.getQty()));
-
+	mediRepo.save(new MedicineStore(newmedistore.getMedicineId(),newmedistore.getMedicineName(),newmedistore.getPrice(),newmedistore.getQty()));
+			
+}
+@DeleteMapping
+public void deleteMedicineStore(@RequestBody Integer medicineId) throws Exception {
+	MedicineStore medistoreToDelete = mediRepo.findBymedicineId(medicineId);
+	if (medistoreToDelete != null) {
+		mediRepo.delete(medistoreToDelete);
+	} else {
+		throw new Exception("Medicine deletion failed");
 	}
+}
+@PutMapping
+public void updateMedicineStore(@RequestBody MedicineDTO updatedMedicineStore) throws Exception {
+	
+	MedicineStore medistoreToUpdate = mediRepo.findBymedicineId(updatedMedicineStore.getMedicineId());
+	if (medistoreToUpdate != null) {
+		medistoreToUpdate.setMedicineName(updatedMedicineStore.getMedicineName());
+		medistoreToUpdate.setPrice(updatedMedicineStore.getPrice());
+		medistoreToUpdate.setQty(updatedMedicineStore.getQty());
+        
+		mediRepo.save(medistoreToUpdate);
+        
+    } else {
+    	throw new Exception("medicine updation failed");
+    }
+	
+}
+public List<MedicineStore> getAllMedicineStore(){
+	return mediRepo.findAll();
 
-	@DeleteMapping
-	public void deleteMedicineStore(@RequestBody MedicineDTO medicine) throws Exception {
-		MedicineStore medistoreToDelete = mediRepo.findByMedicineId(medicine.getMedicineId());
-		if (medistoreToDelete != null) {
-			mediRepo.delete(medistoreToDelete);
-		} else {
-			throw new Exception("Medicine deletion failed");
-		}
-	}
-
-	@PutMapping
-	public void updateMedicineStore(@RequestBody MedicineDTO updatedMedicineStore) throws Exception {
-
-		MedicineStore medistoreToUpdate = mediRepo.findByMedicineId(updatedMedicineStore.getMedicineId());
-		if (medistoreToUpdate != null) {
-			medistoreToUpdate.setMedicineName(updatedMedicineStore.getMedicineName());
-			medistoreToUpdate.setPrice(updatedMedicineStore.getPrice());
-			medistoreToUpdate.setQty(updatedMedicineStore.getQty());
-			System.out.println(medistoreToUpdate);
-			mediRepo.save(medistoreToUpdate);
-
-		} else {
-			throw new Exception("medicine updation failed");
-		}
-
-	}
-
-	@GetMapping("/all")
-	public List<MedicineStore> getAllMedicineStore() {
-		return mediRepo.findAll();
-
-	}
-
-	@GetMapping("/medicinename")
-	public MedicineStore getByMedicineName(@RequestBody MedicineDTO medicine) {
-		return mediRepo.findByMedicineName(medicine.getMedicineName());
-	}
+}
 }

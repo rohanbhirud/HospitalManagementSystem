@@ -9,8 +9,6 @@ import Ward from './components/ward/Ward';
 import Admin from './components/admin/Admin';
 import Profile from './components/Profile';
 import ChangePass from './components/ChangePass';
-import Doctor from './components/doctor/Doctor';
-import Pharmacist from './components/pharmacist/Pharmacist';
 
 function App() {
 
@@ -22,8 +20,6 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/ward" element={<Ward />} />
         <Route path="/admin/*" element={<Admin />} />
-        <Route path="/doctor/*" element={<Doctor />} />
-        <Route path="/pharmacist/*" element={<Pharmacist />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/profile/changepass" element={<ChangePass/>} />
         <Route path="/error" element={<ErrorPage />} />

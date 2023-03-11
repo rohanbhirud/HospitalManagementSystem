@@ -78,7 +78,7 @@ const AddUser = () => {
         <div className='form-group'>
           <label>Address</label>
           <textarea name='address' value={formData.address} onChange={handleChange} className='form-control' required />
-        </div><br/>
+        </div>
         <button type='submit' className='btn btn-primary'>Add User</button>
       </form>
     </div>

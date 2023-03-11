@@ -17,7 +17,7 @@
 
 .add-view-buttons button {
   border: none;
-  background-color: #4cdd7a !important;
+  background-color: #4cdd7a;
   color: rgb(1, 1, 1);
   font-size: 1rem;
   font-weight: bold;
