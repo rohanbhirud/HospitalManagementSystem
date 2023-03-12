@@ -1,0 +1,31 @@
+.lab-sidebar {
+    display: flex;
+    height: 500%;
+    flex-direction: column;
+    background-color: #928ae9;
+    padding: 10px;
+    border-radius: px;
+  }
+  
+  .collapsible-field button {
+    border: none;
+    background-color: transparent;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .lab-view-buttons button {
+    border: none;
+    background-color: #4cdd7a;
+    color: rgb(1, 1, 1);
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .lab-view-buttons button:hover {
+    background-color: #7f9ab7;
+  }
