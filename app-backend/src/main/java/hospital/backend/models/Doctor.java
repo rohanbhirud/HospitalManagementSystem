@@ -31,7 +31,8 @@ public class Doctor {
 	List<Appointment> appointmentList=new ArrayList<>();
 	
 	@JsonProperty
-	@OneToMany(mappedBy = "doctor",cascade = CascadeType.ALL,orphanRemoval = true)
+	@JsonIgnore
+	@OneToMany(mappedBy = "doctor",cascade = CascadeType.ALL,orphanRemoval = true, fetch = FetchType.LAZY)
 	List<Prescription> prescriptionList=new ArrayList<>();
 
 	

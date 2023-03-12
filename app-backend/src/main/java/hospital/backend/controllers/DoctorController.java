@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import hospital.backend.models.Appointment;
+import hospital.backend.models.Doctor;
 import hospital.backend.models.Prescription;
+import hospital.backend.repo.DoctorRepo;
 import hospital.backend.service.DoctorService;
 
 @RestController
@@ -24,6 +26,9 @@ public class DoctorController {
 	
 	@Autowired
 	DoctorService doctorService;
+	
+	@Autowired
+	private DoctorRepo doctorRepo;
 	
 	public DoctorController() {
 		System.out.println("In constr of " + getClass().getName());
@@ -66,6 +71,11 @@ public class DoctorController {
 
 		System.out.println("In controller - getAppointmentByDocId");
 		return doctorService.getAppointment(docId);
+	}
+	
+	@GetMapping("/all")
+	public List<Doctor> getAllDoctors(){
+		return doctorRepo.findAll();
 	}
 	
 }
