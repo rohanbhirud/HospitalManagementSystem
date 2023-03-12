@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Doctor {
 
 	@Id
-	private Integer DoctorId;
+	private Integer doctorId;
 	
 	@Column
 	private String name;
@@ -50,11 +50,11 @@ public class Doctor {
 
 
 	public int getDoctorId() {
-		return DoctorId;
+		return doctorId;
 	}
 
 	public void setDoctorId(int id) {
-		this.DoctorId = id;
+		this.doctorId = id;
 	}
 
 	public String getName() {
@@ -69,7 +69,7 @@ public class Doctor {
 
 	@Override
 	public String toString() {
-		return "Doctor [DoctorId=" + DoctorId + ", name=" + name + " ]";
+		return "Doctor [DoctorId=" + doctorId + ", name=" + name + " ]";
 	}
 	
 }

@@ -8,4 +8,5 @@ import hospital.backend.models.Doctor;
 @Repository
 public interface DoctorRepo extends JpaRepository<Doctor, Integer> {
 	
+	public Doctor findByDoctorId(int doctorId);
 }
