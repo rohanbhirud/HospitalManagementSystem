@@ -20,7 +20,7 @@ const LabInchargeSidebar = ({ onUploadReportClick, onReportByIdClick, onAllRepor
       <div className='collapsible-field'>
         <div className='lab-view-buttons'>
           <button onClick={handleUploadReportClick}>Upload Report</button><br /><br />
-          <button onClick={handleReportByIdClick}>Report By Id</button><br /><br />
+          {/* <button onClick={handleReportByIdClick}>Report By Id</button><br /><br /> */}
           <button onClick={handleAllReportClick}>All Reports</button>
         </div>
 

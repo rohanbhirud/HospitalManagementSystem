@@ -94,7 +94,7 @@ public class LabInChargeController {
 	List<ResponseFile> files = reportService.getAllReports().map(patientReportDetails -> {
 	  String fileDownloadUri = ServletUriComponentsBuilder
 	      .fromCurrentContextPath()
-	      .path("/report/files/")
+	      .path("api/v1/report/files/")
 	      .path(patientReportDetails.getId().toString())
 	      .toUriString();
 	
