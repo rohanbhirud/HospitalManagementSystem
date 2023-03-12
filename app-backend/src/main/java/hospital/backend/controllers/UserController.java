@@ -15,9 +15,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+
 import hospital.backend.exceptions.InvalidAuthorityException;
 import hospital.backend.exceptions.UserNotFoundException;
+import hospital.backend.models.Doctor;
 import hospital.backend.models.User;
+import hospital.backend.repo.DoctorRepo;
 import hospital.backend.repo.UserRepository;
 import hospital.backend.requests.PasswordChangeRequest;
 import hospital.backend.requests.UserDTO;
@@ -36,6 +39,9 @@ public class UserController {
 
 	@Autowired
 	private PasswordEncoder passEncoder;
+	
+	@Autowired
+	private DoctorRepo doctorRepo;
 
 	@GetMapping
 	public User getUser(@RequestParam String username) {
@@ -57,7 +63,14 @@ public class UserController {
 		userToCreate.setEmail(newuser.getEmail());
 		userToCreate.setAge(newuser.getAge());
 		userToCreate.setAddress(newuser.getAddress());
-		userRepo.save(userToCreate);
+		User u=userRepo.save(userToCreate);
+		if(newuser.getAuthority().equals("DOCTOR"))
+		{
+			Doctor d1=new Doctor();
+			d1.setDoctorId(u.getUserId());
+			d1.setName(u.getFirstname());
+			doctorRepo.save(d1);
+		}
 
 	}
 
@@ -66,7 +79,12 @@ public class UserController {
 		User userToDelete = userRepo.findByUsername(username);
 		if (userToDelete != null) {
 			userRepo.delete(userToDelete);
-		} else {
+			if(userToDelete.getAuthorities().equals("DOCTOR")) {
+				doctorRepo.delete(doctorRepo.getById(userToDelete.getUserId()));
+			}
+		} 
+		
+		else {
 			throw new Exception("User deletion failed");
 		}
 	}
@@ -83,8 +101,17 @@ public class UserController {
 			userToUpdate.setAge(updatedUser.getAge());
 			userToUpdate.setAddress(updatedUser.getAddress());
 			userRepo.save(userToUpdate);
+			if(userToUpdate.getAuthorities().equals("DOCTOR")) {
+				Doctor doc=doctorRepo.getById(Integer.parseInt(updatedUser.getUserId()));
+				if(doc != null) {
+					doc.setName(updatedUser.getFirstname());
+					doctorRepo.save(doc);
+				}
+			}
 
-		} else {
+		}
+		
+		else {
 			throw new Exception("User updation failed");
 		}
 

@@ -19,14 +19,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Doctor {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int DoctorId;
-	
-	@Column()
-	private String name;
+	private Integer DoctorId;
 	
 	@Column
-	private String specialty;
+	private String name;
+	
+	
 	
 	@OneToMany(mappedBy = "doctor",cascade = CascadeType.ALL,orphanRemoval = true, fetch = FetchType.LAZY)
 	@JsonIgnore
@@ -41,22 +39,21 @@ public class Doctor {
 	
 	
 
-	public Doctor(String name, String specialty, List<Appointment> appointmentList,
+	public Doctor(String name, List<Appointment> appointmentList,
 			List<Prescription> prescriptionList) {
 		super();
 		this.name = name;
-		this.specialty = specialty;
 		this.appointmentList = appointmentList;
 		this.prescriptionList = prescriptionList;
 	}
 
 
 
-	public int getId() {
+	public int getDoctorId() {
 		return DoctorId;
 	}
 
-	public void setId(int id) {
+	public void setDoctorId(int id) {
 		this.DoctorId = id;
 	}
 
@@ -68,17 +65,11 @@ public class Doctor {
 		this.name = name;
 	}
 
-	public String getSpecialty() {
-		return specialty;
-	}
-
-	public void setSpecialty(String specialty) {
-		this.specialty = specialty;
-	}
+	
 
 	@Override
 	public String toString() {
-		return "Doctor [id=" + DoctorId + ", name=" + name + ", specialty=" + specialty + "]";
+		return "Doctor [DoctorId=" + DoctorId + ", name=" + name + " ]";
 	}
 	
 }

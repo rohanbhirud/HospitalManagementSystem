@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIncludeProperties;
+
 
 
 @Entity
@@ -20,10 +22,12 @@ public class Prescription {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer prescriptionId;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonIncludeProperties({ "doctorId" })
+	@ManyToOne
 	@JoinColumn(name = "doctor_id")
 	private Doctor doctor;
 
+	@JsonIncludeProperties({ "patientId" })
 	@ManyToOne
 	@JoinColumn(name = "patient_id")
 	private Patient patient;
