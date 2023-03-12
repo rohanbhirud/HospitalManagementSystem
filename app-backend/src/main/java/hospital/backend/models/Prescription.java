@@ -1,6 +1,7 @@
 package hospital.backend.models;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,8 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonIncludeProperties;
 
+import com.fasterxml.jackson.annotation.JsonIncludeProperties;
 
 
 @Entity
@@ -63,14 +64,6 @@ public class Prescription {
 		this.prescription = prescription;
 	}
 
-	public String getDiagnosis() {
-		return diagnosis;
-	}
-
-	public void setDiagnosis(String diagnosis) {
-		this.diagnosis = diagnosis;
-	}
-
 	public LocalDate getPrescriptionDate() {
 		return prescriptionDate;
 	}
@@ -79,9 +72,6 @@ public class Prescription {
 		this.prescriptionDate = prescriptionDate;
 	}
 	
-	
-	
-
 	public Integer getPrescriptionId() {
 		return prescriptionId;
 	}
@@ -90,7 +80,19 @@ public class Prescription {
 		this.prescriptionId = prescriptionId;
 	}
 
+	public Prescription() {
+		super();
+	}
 
+	
+
+	public String getDiagnosis() {
+		return diagnosis;
+	}
+
+	public void setDiagnosis(String diagnosis) {
+		this.diagnosis = diagnosis;
+	}
 
 	public Prescription(Doctor doctor, Patient patient, String prescription, String diagnosis,
 			LocalDate prescriptionDate) {
@@ -102,16 +104,13 @@ public class Prescription {
 		this.prescriptionDate = prescriptionDate;
 	}
 
-	public Prescription() {
-		super();
-	}
-
 	@Override
 	public String toString() {
-		return "Prescription [doctor=" + doctor + ", patient=" + patient + ", prescription=" + prescription
-				+ ", diagnosis=" + diagnosis + ", prescriptionDate=" + prescriptionDate + "]";
+		return "Prescription [prescriptionId=" + prescriptionId + ", doctor=" + doctor + ", patient=" + patient
+				+ ", prescription=" + prescription + ", labTest=" + diagnosis + ", prescriptionDate=" + prescriptionDate
+				+ "]";
 	}
-	
+
 	
 
 }

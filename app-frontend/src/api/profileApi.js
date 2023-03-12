@@ -32,6 +32,7 @@ export const updateProfile = (user)=>{
             "password":"",
             "firstname":user.firstname,
             "lastname":user.lastname,
+            "email":user.email,
             "authority":"",
             "age":user.age,
             "address":user.address
@@ -52,6 +53,7 @@ export const addUser = (user)=>{
             "password":user.password,
             "firstname":user.firstname,
             "lastname":user.lastname,
+            "email":user.email,
             "authority":user.authority,
             "age":user.age,
             "address":user.address
@@ -72,6 +74,7 @@ export const updateUser = (user)=>{
             "password":"",
             "firstname":user.firstname,
             "lastname":user.lastname,
+            "email":user.email,
             "authority":user.authority,
             "age":user.age,
             "address":user.address

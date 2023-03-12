@@ -18,7 +18,7 @@ public class MedicineStoreDetailsImpl implements MedicineStoreService {
 	@Override
 	public MedicineStore loadMedicineStoreByMedicineId(Integer medicineId){
 		// TODO Auto-generated method stub
-		MedicineStore medicinestore = medicineRepository.findBymedicineId(medicineId);
+		MedicineStore medicinestore = medicineRepository.findByMedicineId(medicineId);
 		return medicinestore;
 		
 	}
