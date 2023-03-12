@@ -12,6 +12,7 @@ import ChangePass from './components/ChangePass';
 import Doctor from './components/doctor/Doctor';
 import Pharmacist from './components/pharmacist/Pharmacist';
 import LabIncharge from './components/labincharge/LabIncharge';
+import Receptionist from './components/receptionist/Receptionist';
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
         <Route path="/ward" element={<Ward />} />
         <Route path="/admin/*" element={<Admin />} />
         <Route path="/doctor/*" element={<Doctor />} />
+        <Route path="/receptionist/*" element={<Receptionist />} />
         <Route path="/pharmacist/*" element={<Pharmacist />} />
         <Route path="/labincharge/*" element={<LabIncharge />} />
         <Route path="/profile" element={<Profile />} />

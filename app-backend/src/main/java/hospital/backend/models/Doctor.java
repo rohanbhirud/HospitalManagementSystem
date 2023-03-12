@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Doctor {
 
 	@Id
-	private Integer DoctorId;
+	private Integer doctorId;
 	
 	@Column
 	private String name;
@@ -31,7 +31,8 @@ public class Doctor {
 	List<Appointment> appointmentList=new ArrayList<>();
 	
 	@JsonProperty
-	@OneToMany(mappedBy = "doctor",cascade = CascadeType.ALL,orphanRemoval = true)
+	@JsonIgnore
+	@OneToMany(mappedBy = "doctor",cascade = CascadeType.ALL,orphanRemoval = true, fetch = FetchType.LAZY)
 	List<Prescription> prescriptionList=new ArrayList<>();
 
 	
@@ -50,11 +51,11 @@ public class Doctor {
 
 
 	public int getDoctorId() {
-		return DoctorId;
+		return doctorId;
 	}
 
 	public void setDoctorId(int id) {
-		this.DoctorId = id;
+		this.doctorId = id;
 	}
 
 	public String getName() {
@@ -69,7 +70,7 @@ public class Doctor {
 
 	@Override
 	public String toString() {
-		return "Doctor [DoctorId=" + DoctorId + ", name=" + name + " ]";
+		return "Doctor [DoctorId=" + doctorId + ", name=" + name + " ]";
 	}
 	
 }

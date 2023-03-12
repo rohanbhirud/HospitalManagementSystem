@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIncludeProperties;
+
 
 @Entity
 public class Appointment {
@@ -22,12 +24,14 @@ public class Appointment {
 	
 	private LocalTime time;
 	
+	@JsonIncludeProperties({ "patientId" })
 	@ManyToOne
 	@JoinColumn(name="patient_id")
 	private Patient patient;
 	
 	private boolean appointmentStatus;
 	
+	@JsonIncludeProperties({ "doctorId" })
 	@ManyToOne
 	@JoinColumn(name="doctor_id")
 	private Doctor doctor;

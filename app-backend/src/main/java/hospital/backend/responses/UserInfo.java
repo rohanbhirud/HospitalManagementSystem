@@ -2,17 +2,29 @@ package hospital.backend.responses;
 
 public class UserInfo {
 	
+	private int userid;
 	private String username;
 	private Object roles;
+	
+	public int getUserid() {
+		return userid;
+	}
 
 
-	public String getUserName() {
+	public void setUserid(int userid) {
+		this.userid = userid;
+	}
+
+
+	public String getUsername() {
 		return username;
 	}
 
-	public void setUserName(String userName) {
-		this.username = userName;
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
+
 
 	public Object getRoles() {
 		return roles;

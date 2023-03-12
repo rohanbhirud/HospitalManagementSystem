@@ -8,9 +8,11 @@ export const doCompleteLogin = async (authRequest) => {
         //console.log(jwt);
 
         const fetchResp = await fetchUserData();
-        const username = fetchResp.data.userName;
+        const username = fetchResp.data.username;
         const authority = fetchResp.data.roles[0].authority;
+        const userid = fetchResp.data.userid;
         localStorage.setItem("username", username);
+        localStorage.setItem("userid", userid);
         localStorage.setItem("authority", authority);
         //console.log(fetchResp.data);
     } catch(err){

@@ -117,7 +117,7 @@ public class DoctorServiceImpl implements DoctorService {
 	@Override
 	public List<Appointment> getAppointment(int docId) {
 		
-		return appointmentRepository.getAppointmentByDoctorAndAppointmentStatus(DocRepo.getById(docId).getDoctorId());
+		return appointmentRepository.getAppointmentByDoctorAndAppointmentStatus(DocRepo.findByDoctorId(docId).getDoctorId(),false);
 	}
 
 }

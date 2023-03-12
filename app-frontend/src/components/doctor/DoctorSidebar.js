@@ -16,8 +16,8 @@ const DoctorSidebar = ({ onPrescribePatientClick, onViewRemainingPatientsClick }
     <div className='doctor-sidebar'>
       <div className='collapsible-field'>
         <div className='prescribe-view-buttons'>
-          <button onClick={handlePrescribePatientClick}>Prescribe Patient</button><br /><br />
-          <button onClick={handleViewRemainingPatientsClick}>View Remaining Patients</button>
+          <button onClick={handlePrescribePatientClick}>Past Prescriptions</button><br /><br />
+          <button onClick={handleViewRemainingPatientsClick}>View Appointed Patients</button>
         </div>
 
       </div>
