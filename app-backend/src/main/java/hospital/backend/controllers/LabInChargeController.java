@@ -77,7 +77,7 @@ public class LabInChargeController {
 	public ResponseEntity<List<ResponseFile>> getListFilesByPatientID(@RequestParam Integer pid) {
 		System.out.println("In filesByPatientID");
 		List<ResponseFile> files = reportService.getAllReportsByPatientId(pid).stream().map(patientReportDetails -> {
-			String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath().path("report/files/")
+			String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath().path("api/v1/report/files/")
 					.path(patientReportDetails.getId().toString()).toUriString();
 
 			return new ResponseFile(patientReportDetails.getId(),patientReportDetails.getReportName(),patientReportDetails.getReportIssueDate(), fileDownloadUri,
