@@ -7,24 +7,23 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+The following software and tools are required to run the project:
 
-```
-Give examples
-```
+- Node.js
+- npm
 
 ### Installation
 
-A step by step series of examples that tell you how to get a development env running
+Follow these steps to set up the development environment:
 
-```
-Give examples
-```
+1. Clone the repository: `git clone https://github.com/username/HospitalManagementSystem.git`
+2. Navigate to the project directory: `cd HospitalManagementSystem`
+3. Install the necessary dependencies: `npm install`
 
 ### Running the Application
 
-Explain how to run the automated tests for this system
+To start the application locally for development and testing purposes, run the following command in the project directory:
 
 ```
-Give examples
+npm start
 ```
