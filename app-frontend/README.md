@@ -1,6 +1,20 @@
-# Getting Started with Create React App
+# Hospital Management System - Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is the frontend of the Hospital Management System. It is built with React and was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Frontend Setup Instructions
+
+To get the frontend up and running, follow these steps:
+1. Navigate to the `app-frontend` directory.
+2. Run `npm install` to install the necessary dependencies.
+3. Run `npm start` to start the application.
+
+## Frontend Structure
+
+The frontend is organized into several main directories:
+* `src/components`: This directory contains all the React components used in the application.
+* `src/api`: This directory contains the API calls to the backend.
+* `src/styles`: This directory contains the CSS styles for the application.
 
 ## Available Scripts
 
